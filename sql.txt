@@ -1,0 +1,70 @@
+
+ create table IF NOT EXISTS class(classId varchar(10),grade int, className varchar(3),primary key(classId));
+ 
+create table IF NOT EXISTS teacher(TeacherID varchar(10) not null,name varchar(30),address varchar(30),class varchar(30),Subject varchar(30),teacherSection varchar(30),Qualifications varchar(30),Gender varchar(10),primary key(teacherId));
+
+create table IF NOT EXISTS teacherDallyAttend(teacherid varchar(10),attend int,primary key(teacherid), foreign key(teacherid) references teacher(teacherId));
+
+create table IF NOT EXISTS timetable(teacherid varchar(10),p1 varchar(10),p2 varchar(10),p3 varchar(10),p4 varchar(10),p5 varchar(10),p6 varchar(10),p7 varchar(10),p8 varchar(10),primary key(teacherid)
+,foreign key(teacherid) references teacher(teacherId),foreign key(p1) references class(classId),foreign key(p2) references class(classId),foreign key(p3) references class(classId)
+,foreign key(p4) references class(classId),foreign key(p5) references class(classId),foreign key(p6) references class(classId),foreign key(p7) references class(classId)
+,foreign key(p8) references class(classId));
+
+create table IF NOT EXISTS assignment(assignmentId varchar(10) not null,classId varchar(10),despt varchar(100),allocateState int,primary key(assignmentId));
+
+
+create table IF NOT EXISTS marks (studentId varchar(10) not null, grade varchar(10),marks varchar(10),subject varchar(10), primary key(studentId));
+
+CREATE TABLE IF NOT EXISTS notice(noticeID varchar(10) not null,noticeName varchar(50),teacherID varchar(10),teacherName varchar(20),grade_class varchar(15),notice_des varchar(255),primary key (noticeID));
+
+insert into class values('10A',10,'10A');
+insert into class values('10B',10,'10B');
+insert into class values('10c',10,'10C');
+insert into class values('9A',9,'9A');
+insert into class values('9B',9,'9B');
+insert into class values('9C',9,'9C');
+insert into class values('8A',8,'8A');
+insert into class values('8B',8,'8B');
+insert into class values('8C',8,'8C');
+insert into class values('7A',7,'7A');
+insert into class values('7B',7,'7B');
+insert into class values('7C',7,'C');
+insert into class values('11A',11,'11A');
+insert into class values('11B',11,'11B');
+insert into class values('11C',11,'11C');
+
+insert into teacher values('TID2001','nimali perera','gampaha','10A','maths','primary','Bsc','male');
+insert into teacher values('TID2002','kamani sillwa','polonnarwa','9A','art','primary','Bsc','male');
+insert into teacher values('TID2003','rathna kottuwegoda','polonnarwa','9B','science','primary','Bsc','male');
+insert into teacher values('TID2004','lalitha amali','kekirawa','10B','maths','primary','Bsc','male');
+insert into teacher values('TID2005','Prera amali','kotuwa','7B','art','primary','Bsc','male');
+insert into teacher values('TID2006','lakmali','polo','8A','science','primary','Bsc','male');
+
+
+insert into teacherDallyAttend values('TID2001',1);
+insert into teacherDallyAttend values('TID2002',1);
+insert into teacherDallyAttend values('TID2003',null);
+insert into teacherDallyAttend values('TID2004',null);
+insert into teacherDallyAttend values('TID2005',null);
+insert into teacherDallyAttend values('TID2006',null);
+
+insert into timetable values('TID2001','10A','11A','9A','8A','7A','10B','9B','11B');
+insert into timetable values('TID2002','10B','11B','9B','8B','7B','7C','9C','11C');
+insert into timetable values('TID2003','10C','11C','9C','8C','7C','10A','9A','11A');
+insert into timetable values('TID2004','10A','11C','9C','8B','7C','11B','9A','7B');
+insert into timetable values('TID2005','10A','11A','9A','8A','7A','10B','9B','11B');
+insert into timetable values('TID2006','10B','11B','9B','8B','7B','7C','9C','11C');
+
+insert into assignment values('asigmt03','10A','acctivity 1.4',null);
+insert into assignment values('asigmt05','10B','acctivity 1.5',null);
+insert into assignment values('asigmt06','10C','acctivity 16',null);
+insert into assignment values('asigmt07','9B','acctivity 1.7',null);
+insert into assignment values('asigmt08','8A','acctivity 1.8',null);
+insert into assignment values('asigmt09','8B','acctivity 1.9',null);
+insert into assignment values('asigmt10','8C','acctivity 1.10',null);
+insert into assignment values('asigmt11','11A','acctivity 1.11',null);
+insert into assignment values('asigmt12','11B','acctivity 1.12',null);
+insert into assignment values('asigmt13','11C','acctivity 1.13',null);
+insert into assignment values('asigmt14','7A','acctivity 1.14',null);
+insert into assignment values('asigmt15','7B','acctivity 1.15',null);
+insert into assignment values('asigmt16','7C','acctivity 1.16',null);

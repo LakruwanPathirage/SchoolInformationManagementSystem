@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Querys>
+
+	<!-- Create table teacher Query -->
+	<query id="create_teacher_table">
+        <![CDATA[
+            CREATE TABLE teacher(
+				teacherID varchar(10) not null,
+				teacherName varchar(20),
+				designation varchar(15),
+				Subject varchar(15),
+				Section varchar(15),
+				address  varchar(50),
+				qualifications varchar(20),
+				gender varchar(10) DEFAULT 'Male',
+				primary key (teacherID)
+			)
+        ]]>
+	</query>
+
+	<!-- DROP TABLE Teachers Query -->
+	<query id="drop_table">
+         <![CDATA[        
+            DROP TABLE IF EXISTS teacher 
+        ]]>
+	</query>
+
+	<!-- Select all customer orders Query -->
+	<query id="insert_teacher">
+        <![CDATA[
+          	insert into teacher values(?,?,?,?,?,?,?,?);
+        ]]>
+	</query>
+
+	<!-- Select a particular teacher by id Query -->
+	<query id="teacher_by_id">
+         <![CDATA[        
+            select * from teacher where teacher.teacherID = ?
+        ]]>
+	</query>
+
+	<!-- Select all teachers -->
+	<query id="all_teachers">
+         <![CDATA[        
+            select * from teacher
+        ]]>
+	</query>
+
+	<!-- Delete a particular teacher by id Query -->
+	<query id="remove_teacher">
+         <![CDATA[        
+            delete from teacher where teacher.teacherID = ?
+        ]]>
+	</query>
+	
+	<!-- Update a particular teacher by id Query -->
+	<query id="update_teacher">
+         <![CDATA[        
+            update teacher set name = ?,address = ?,class = ?,Subject = ?,teacherSection = ?,Qualifications = ?,Gender = ? where e.teacherID = ?
+        ]]>
+	</query>
+	
+		<!-- Get teacher IDs Query -->
+	<query id="teacher_ids">
+         <![CDATA[        
+            select e.teacherID from teacher as e
+        ]]>
+	</query>
+
+</Querys>
